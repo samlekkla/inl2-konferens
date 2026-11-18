@@ -1,0 +1,18 @@
+# Beroenden
+node_modules/
+
+# Operativsystem
+.DS_Store
+Thumbs.db
+
+# Lighthouse-rapporter
+lighthouse/
+*.report.html
+*.report.json
+
+# Testskärmdumpar
+tests/screenshots/
+test-results/
+
+# Personliga anteckningar
+FORKLARING.md
