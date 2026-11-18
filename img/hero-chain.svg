@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="480" height="480">
+  <style>
+    .box { fill: #151917; stroke: #3dff9a; stroke-width: 2; }
+    .box--pending { stroke: #ffb547; stroke-dasharray: 6 4; }
+    .rail { fill: none; stroke: #3a433e; stroke-width: 1.5; stroke-dasharray: 3 7; }
+    .link { fill: none; stroke: #3dff9a; stroke-width: 2; }
+    .link--pending { stroke: #ffb547; stroke-dasharray: 6 4; }
+    .row { fill: #3dff9a; opacity: 0.55; }
+    .row--pending { fill: #ffb547; }
+    .dot { fill: #3dff9a; }
+    .dot--pending { fill: #ffb547; }
+    .label { fill: #9aa59f; font: 13px ui-monospace, Consolas, monospace; }
+    @media (prefers-color-scheme: light) {
+      .box { fill: #f6f7f6; stroke: #08703f; }
+      .box--pending, .link--pending { stroke: #8a5000; }
+      .rail { stroke: #8d9690; }
+      .link { stroke: #08703f; }
+      .row, .dot { fill: #08703f; }
+      .row--pending, .dot--pending { fill: #8a5000; }
+      .label { fill: #4a534e; }
+    }
+  </style>
+  <path class="rail" d="M10 470 470 10" />
+
+  <path class="link" d="M110 415h65v-65" />
+  <circle class="dot" cx="175" cy="415" r="4" />
+  <path class="link" d="M220 305h65v-65" />
+  <circle class="dot" cx="285" cy="305" r="4" />
+  <path class="link link--pending" d="M330 195h65v-65" />
+  <circle class="dot dot--pending" cx="395" cy="195" r="4" />
+
+  <text class="label" x="20" y="362">#811</text>
+  <rect class="box" x="20" y="370" width="90" height="90" rx="3" />
+  <rect class="row" x="34" y="388" width="52" height="5" />
+  <rect class="row" x="34" y="402" width="62" height="5" />
+  <rect class="row" x="34" y="416" width="38" height="5" />
+  <text class="label" x="34" y="446">0x3f…a9</text>
+
+  <text class="label" x="130" y="252">#812</text>
+  <rect class="box" x="130" y="260" width="90" height="90" rx="3" />
+  <rect class="row" x="144" y="278" width="60" height="5" />
+  <rect class="row" x="144" y="292" width="44" height="5" />
+  <rect class="row" x="144" y="306" width="56" height="5" />
+  <text class="label" x="144" y="336">0x8b…07</text>
+
+  <text class="label" x="240" y="142">#813</text>
+  <rect class="box" x="240" y="150" width="90" height="90" rx="3" />
+  <rect class="row" x="254" y="168" width="40" height="5" />
+  <rect class="row" x="254" y="182" width="62" height="5" />
+  <rect class="row" x="254" y="196" width="50" height="5" />
+  <text class="label" x="254" y="226">0xc4…5e</text>
+
+  <text class="label" x="350" y="32">#814 pending</text>
+  <rect class="box box--pending" x="350" y="40" width="90" height="90" rx="3" />
+  <rect class="row row--pending" x="364" y="58" width="48" height="5" />
+  <rect class="row row--pending" x="364" y="72" width="30" height="5" />
+  <text class="label" x="364" y="116">0x??…??</text>
+</svg>

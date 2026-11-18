@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <style>
+    .bg { fill: #0d0f0e; }
+    .grid { stroke: #1d2220; stroke-width: 1; }
+    .water { fill: #10241a; }
+    .street { fill: none; stroke: #3a433e; stroke-width: 10; stroke-linecap: square; }
+    .street--minor { stroke-width: 5; }
+    .metro { fill: none; stroke: #3dff9a; stroke-width: 4; }
+    .route { fill: none; stroke: #ffb547; stroke-width: 3; stroke-dasharray: 8 6; }
+    .station { fill: #0d0f0e; stroke: #3dff9a; stroke-width: 3; }
+    .venue { fill: #3dff9a; }
+    .text { fill: #e6ebe8; font: 700 14px ui-monospace, Consolas, monospace; }
+    .muted { fill: #9aa59f; font: 12px ui-monospace, Consolas, monospace; }
+    .accent { fill: #ffb547; font: 700 12px ui-monospace, Consolas, monospace; }
+    .scale { stroke: #9aa59f; stroke-width: 2; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #f6f7f6; }
+      .grid { stroke: #e1e4e2; }
+      .water { fill: #d5e6dc; }
+      .street { stroke: #c3c8c5; }
+      .metro { stroke: #08703f; }
+      .route { stroke: #8a5000; }
+      .station { fill: #f6f7f6; stroke: #08703f; }
+      .venue { fill: #08703f; }
+      .text { fill: #111513; }
+      .muted { fill: #4a534e; }
+      .accent { fill: #8a5000; }
+      .scale { stroke: #4a534e; }
+    }
+  </style>
+  <rect class="bg" width="640" height="400" />
+  <path
+    class="grid"
+    d="M0 50h640M0 100h640M0 150h640M0 200h640M0 250h640M0 300h640M0 350h640M80 0v400M160 0v400M240 0v400M320 0v400M400 0v400M480 0v400M560 0v400"
+  />
+  <path class="water" d="M0 0h640v70c-80 20-170 10-260 24S170 120 90 104 20 84 0 92z" />
+  <text class="muted" x="24" y="40">HAMMARBY SJÖ</text>
+
+  <path class="street" d="M0 200h640" />
+  <path class="street street--minor" d="M200 120v280M420 200v200M420 300h220M60 300h140" />
+  <text class="muted" x="452" y="190">RINGVÄGEN</text>
+  <text class="muted" x="520" y="290">KONSENSUSGATAN</text>
+
+  <path class="metro" d="M200 0v400" />
+  <circle class="station" cx="200" cy="200" r="13" />
+  <text class="text" x="86" y="236">T SKANSTULL</text>
+  <text class="muted" x="86" y="254">gröna linjen</text>
+
+  <path class="route" d="M213 200h207v100h60" />
+  <text class="accent" x="250" y="226">6 MIN →</text>
+
+  <rect class="venue" x="480" y="286" width="28" height="28" rx="3" />
+  <text class="text" x="520" y="334">NODHALLEN</text>
+  <text class="muted" x="520" y="352">Konsensusgatan 12</text>
+
+  <path class="scale" d="M24 372h80M24 366v12M104 366v12" />
+  <text class="muted" x="24" y="360">200 m</text>
+  <text class="text" x="604" y="40">N</text>
+  <path class="scale" d="M609 72V50M603 58l6-8 6 8" />
+</svg>

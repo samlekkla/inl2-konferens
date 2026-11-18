@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg { fill: #0d0f0e; }
+    .fg { fill: #3dff9a; }
+    .ln { fill: none; stroke: #3dff9a; stroke-width: 2.5; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #eceeec; }
+      .fg { fill: #08703f; }
+      .ln { stroke: #08703f; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="6" />
+  <rect class="fg" x="5" y="18" width="9" height="9" rx="1.5" />
+  <rect class="fg" x="18" y="5" width="9" height="9" rx="1.5" />
+  <path class="ln" d="M14 22.5h8.5V14" />
+</svg>
