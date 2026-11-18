@@ -426,10 +426,158 @@
 
       <section class="section tickets" id="biljetter" aria-labelledby="biljetter-title">
         <h2 class="section__title" id="biljetter-title">Biljetter</h2>
+        <p class="section__intro">
+          Fyra nivåer, alla med samma garanti: gas fee är alltid noll. Det är det enda löftet i
+          branschen vi med säkerhet kan hålla. Priserna anges exklusive moms.
+        </p>
+        <ul class="tickets__list">
+          <li class="tickets__item">
+            <article class="ticket" data-tx="0x4c1e…9b07">
+              <h3 class="ticket__title">Light Node</h3>
+              <p class="ticket__tier">Student</p>
+              <dl class="ticket__ledger">
+                <dt class="ticket__key">Pris</dt>
+                <dd class="ticket__value">990 SEK</dd>
+                <dt class="ticket__key">Gas fee</dt>
+                <dd class="ticket__value">0</dd>
+                <dt class="ticket__key">Giltig</dt>
+                <dd class="ticket__value">2 dagar</dd>
+              </dl>
+              <ul class="ticket__perks">
+                <li class="ticket__perk">Tillgång till alla föredrag</li>
+                <li class="ticket__perk">Lunch och obegränsat kaffe</li>
+                <li class="ticket__perk">Giltig studentlegitimation krävs</li>
+              </ul>
+              <a
+                class="button ticket__cta"
+                href="mailto:biljetter@blockheight.example?subject=Light%20Node"
+                >Köp Light Node</a
+              >
+            </article>
+          </li>
+          <li class="tickets__item">
+            <article class="ticket ticket--featured" data-tx="0x7f3a…c218">
+              <h3 class="ticket__title">Full Node</h3>
+              <p class="ticket__tier">Standard</p>
+              <dl class="ticket__ledger">
+                <dt class="ticket__key">Pris</dt>
+                <dd class="ticket__value">3 900 SEK</dd>
+                <dt class="ticket__key">Gas fee</dt>
+                <dd class="ticket__value">0</dd>
+                <dt class="ticket__key">Giltig</dt>
+                <dd class="ticket__value">2 dagar</dd>
+              </dl>
+              <ul class="ticket__perks">
+                <li class="ticket__perk">Allt i Light Node</li>
+                <li class="ticket__perk">Plats på workshoppen ”Bryt ett kontrakt”</li>
+                <li class="ticket__perk">Inspelningar av alla pass</li>
+              </ul>
+              <a
+                class="button button--primary ticket__cta"
+                href="mailto:biljetter@blockheight.example?subject=Full%20Node"
+                >Köp Full Node</a
+              >
+            </article>
+          </li>
+          <li class="tickets__item">
+            <article class="ticket" data-tx="0xa90d…13e4">
+              <h3 class="ticket__title">Validator</h3>
+              <p class="ticket__tier">VIP med middag</p>
+              <dl class="ticket__ledger">
+                <dt class="ticket__key">Pris</dt>
+                <dd class="ticket__value">7 500 SEK</dd>
+                <dt class="ticket__key">Gas fee</dt>
+                <dd class="ticket__value">0</dd>
+                <dt class="ticket__key">Giltig</dt>
+                <dd class="ticket__value">2 dagar + middag</dd>
+              </dl>
+              <ul class="ticket__perks">
+                <li class="ticket__perk">Allt i Full Node</li>
+                <li class="ticket__perk">Talarmiddag torsdag kväll</li>
+                <li class="ticket__perk">Reserverad plats på första raden</li>
+              </ul>
+              <a
+                class="button ticket__cta"
+                href="mailto:biljetter@blockheight.example?subject=Validator"
+                >Köp Validator</a
+              >
+            </article>
+          </li>
+          <li class="tickets__item">
+            <article class="ticket" data-tx="0x2b6f…e5a0">
+              <h3 class="ticket__title">Sponsor Block</h3>
+              <p class="ticket__tier">Utställare</p>
+              <dl class="ticket__ledger">
+                <dt class="ticket__key">Pris</dt>
+                <dd class="ticket__value">från 45 000 SEK</dd>
+                <dt class="ticket__key">Gas fee</dt>
+                <dd class="ticket__value">0</dd>
+                <dt class="ticket__key">Giltig</dt>
+                <dd class="ticket__value">2 dagar, 4 personer</dd>
+              </dl>
+              <ul class="ticket__perks">
+                <li class="ticket__perk">Monterplats i foajén</li>
+                <li class="ticket__perk">Fyra Full Node-biljetter</li>
+                <li class="ticket__perk">Logotyp på sajten, ingen tid på scen</li>
+              </ul>
+              <a
+                class="button ticket__cta"
+                href="mailto:sponsor@blockheight.example?subject=Sponsor%20Block"
+                >Kontakta oss om Sponsor Block</a
+              >
+            </article>
+          </li>
+        </ul>
       </section>
 
       <section class="section info" id="info" aria-labelledby="info-title">
         <h2 class="section__title" id="info-title">Praktisk info</h2>
+
+        <section class="info__group" aria-labelledby="plats-title">
+          <h3 class="info__title" id="plats-title">Plats och tider</h3>
+          <address class="info__address">
+            Nodhallen<br />
+            Konsensusgatan 12<br />
+            118 27 Stockholm
+          </address>
+          <dl class="info__facts">
+            <dt class="info__term">Datum</dt>
+            <dd class="info__desc">
+              <time datetime="2027-06-10">10</time>–<time datetime="2027-06-11">11 juni 2027</time>
+            </dd>
+            <dt class="info__term">Insläpp</dt>
+            <dd class="info__desc">
+              <time datetime="08:30">08:30</time> båda dagarna, första passet börjar
+              <time datetime="09:30">09:30</time>
+            </dd>
+            <dt class="info__term">Tillgänglighet</dt>
+            <dd class="info__desc">Hiss, hörslinga och textning av alla pass</dd>
+            <dt class="info__term">Wifi</dt>
+            <dd class="info__desc">blockheight-guest, lösenordet står på din biljett</dd>
+          </dl>
+        </section>
+
+        <section class="info__group" aria-labelledby="hitta-title">
+          <h3 class="info__title" id="hitta-title">Hitta hit</h3>
+          <ul class="info__routes">
+            <li class="info__route">
+              <strong class="info__mode">Tunnelbana:</strong> gröna linjen till Skanstull, utgång
+              Ringvägen. Sedan sex minuters promenad österut.
+            </li>
+            <li class="info__route">
+              <strong class="info__mode">Pendeltåg:</strong> till Stockholms södra, därefter tio
+              minuters promenad.
+            </li>
+            <li class="info__route">
+              <strong class="info__mode">Cykel:</strong> cykelparkering finns vid entrén. Lås
+              cykeln; vi litar på kryptografi, inte på folk.
+            </li>
+            <li class="info__route">
+              <strong class="info__mode">Bil:</strong> avråds. Parkeringen kostar mer än en Light
+              Node.
+            </li>
+          </ul>
+        </section>
       </section>
     </main>
 
