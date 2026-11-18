@@ -1,0 +1,7 @@
+# Genererat eller externt
+node_modules/
+package-lock.json
+css/
+lighthouse/
+tests/screenshots/
+test-results/
