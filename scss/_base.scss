@@ -1,0 +1,108 @@
+// ==========================================================================
+// Base – nollställning och grundstilar för HTML-element (inga klasser)
+// ==========================================================================
+@use "variables" as v;
+@use "mixins" as m;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+// Mjuk scroll till ankare – bara om användaren inte bett om mindre rörelse.
+@include m.motion {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-block-size: 100vh;
+  background-color: var(--color-bg);
+  // Tunt rutnät som i ett ritblock eller en block explorer.
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  color: var(--color-text);
+  font-family: v.$font-sans;
+  font-size: m.fs("base");
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: v.$font-mono;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: m.fs("xl");
+}
+
+h3 {
+  font-size: m.fs("lg");
+}
+
+h4 {
+  font-size: m.fs("md");
+}
+
+img {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+// Attributselektor: bara listor med en egen klass nollställs.
+// Listor i löptext behåller sina punkter.
+ul[class],
+ol[class] {
+  padding: 0;
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+time {
+  font-family: v.$font-mono;
+  font-variant-numeric: tabular-nums;
+}
+
+// Allt med ett id kan vara ett ankarmål – lämna plats för den fasta headern.
+[id] {
+  scroll-margin-top: v.$header-offset;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
