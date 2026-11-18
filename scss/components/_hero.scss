@@ -1,0 +1,135 @@
+// ==========================================================================
+// Komponent: hero – rubrik med terminalmarkör, nyckeltal och illustration
+// ==========================================================================
+@use "../variables" as v;
+@use "../mixins" as m;
+
+// Grid: på desktop ligger text och bild i två kolumner (två dimensioner).
+.hero {
+  display: grid;
+  gap: m.space("m");
+  padding-block: m.space("2xl");
+
+  @include m.gutter;
+
+  @include m.mq("desktop") {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    column-gap: m.space("xl");
+    align-items: center;
+
+    // Barnkombinator + :not(): allt utom bilden hamnar i vänster kolumn.
+    > :not(.hero__image) {
+      grid-column: 1;
+    }
+  }
+}
+
+.hero__eyebrow {
+  color: var(--color-warning);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  &::before {
+    content: "> " / "";
+    color: var(--color-accent);
+  }
+}
+
+.hero__title {
+  font-size: m.fs("hero");
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  overflow-wrap: anywhere;
+
+  // Terminalmarkören.
+  &::after {
+    content: "";
+    display: inline-block;
+    inline-size: 0.5em;
+    block-size: 0.8em;
+    margin-inline-start: 0.08em;
+    background-color: var(--color-accent);
+    box-shadow: 0 0 1rem var(--color-glow);
+    vertical-align: -0.05em;
+  }
+
+  @include m.motion {
+    &::after {
+      animation: blink 1.1s steps(1, end) infinite;
+    }
+  }
+}
+
+.hero__lead {
+  max-inline-size: 60ch;
+  font-size: m.fs("md");
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: m.space("xs");
+}
+
+// Nyckeltalen som en liten tabell: 1px gap + linjefärgad bakgrund = rutnätslinjer.
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--color-line);
+  background-color: var(--color-line);
+
+  @include m.mq("tablet") {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.hero__stat {
+  padding: m.space("xs") m.space("s");
+  background-color: var(--color-bg);
+
+  // Strukturell pseudoklass: sista nyckeltalet (gas fee: 0) lyfts fram.
+  &:last-child .hero__stat-value {
+    color: var(--color-accent);
+  }
+}
+
+.hero__stat-label {
+  color: var(--color-text-muted);
+  font-family: v.$font-mono;
+  font-size: m.fs("xs");
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__stat-value {
+  font-family: v.$font-mono;
+  font-size: m.fs("xl");
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+// Illustrationen visas från tablet; på mobil räcker texten.
+.hero__image {
+  display: none;
+
+  @include m.mq("tablet") {
+    display: block;
+    justify-self: center;
+    inline-size: min(100%, 22rem);
+  }
+
+  @include m.mq("desktop") {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    inline-size: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

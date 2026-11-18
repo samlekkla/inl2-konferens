@@ -27,6 +27,12 @@
   }
 }
 
+// Sidmarginal utan wrapper-div: innehållet blir högst $container-max brett,
+// men elementets bakgrund och kantlinjer går ändå kant i kant.
+@mixin gutter {
+  padding-inline: max(#{space("s")}, (100% - #{v.$container-max}) / 2);
+}
+
 // All rörelse läggs här inuti, så stängs den av automatiskt
 // för den som valt "minska rörelse" i operativsystemet.
 @mixin motion {

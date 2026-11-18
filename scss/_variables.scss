@@ -61,6 +61,7 @@ $theme-mainnet: (
   "on-accent": #04130b,
   "warning": #ffb547,
   "grid": rgb(61 255 154 / 0.045),
+  "glow": rgb(61 255 154 / 0.35),
 );
 
 $theme-testnet: (
@@ -74,4 +75,5 @@ $theme-testnet: (
   "on-accent": #ffffff,
   "warning": #8a5000,
   "grid": rgb(8 112 63 / 0.08),
+  "glow": rgb(8 112 63 / 0),
 );

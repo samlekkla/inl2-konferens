@@ -1,0 +1,140 @@
+// ==========================================================================
+// Layout – sidhuvud, navigation, sektioner och sidfot
+// ==========================================================================
+@use "variables" as v;
+@use "mixins" as m;
+
+// Sidhuvud ----------------------------------------------------------------
+// Flex: logga och meny ligger på en rad och bryts vid behov (en dimension).
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: m.space("2xs") m.space("m");
+  padding-block: m.space("xs");
+  border-block-end: 1px solid var(--color-line);
+  background-color: var(--color-bg);
+
+  @include m.gutter;
+
+  // Fast sidhuvud först när det finns plats, så att det inte äter
+  // skärmen på mobil eller vid hög zoom.
+  @include m.mq("tablet") {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 10;
+  }
+}
+
+.site-header__logo {
+  color: var(--color-text);
+  font-family: v.$font-mono;
+  font-size: m.fs("md");
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+
+  // Visar vilket "nätverk" (tema) som är aktivt. "/ ''" = tom alt-text,
+  // så att skärmläsare inte läser upp dekoren.
+  &::after {
+    content: "mainnet" / "";
+    margin-inline-start: m.space("2xs");
+    padding: 0.125rem 0.375rem;
+    border: 1px solid currentcolor;
+    border-radius: v.$radius;
+    color: var(--color-accent);
+    font-size: m.fs("xs");
+    font-weight: 400;
+    letter-spacing: 0;
+    vertical-align: middle;
+  }
+
+  @media (prefers-color-scheme: light) {
+    &::after {
+      content: "testnet" / "";
+    }
+  }
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 m.space("s");
+}
+
+.site-nav__link {
+  display: inline-block;
+  padding-block: m.space("2xs");
+  color: var(--color-text-muted);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  // Attributselektor: länkar som pekar inom sidan får ett #-prefix.
+  &[href^="#"]::before {
+    content: "#" / "";
+    color: var(--color-accent);
+  }
+}
+
+// Sektioner ---------------------------------------------------------------
+.section {
+  padding-block: m.space("2xl");
+  border-block-start: 1px solid var(--color-line);
+
+  @include m.gutter;
+
+  // Blocknummer/hash som dekor, hämtat från data-block i HTML.
+  &[data-block]::before {
+    content: "BLOCK " attr(data-block) / "";
+    display: block;
+    grid-column: 1 / -1;
+    margin-block-end: m.space("2xs");
+    color: var(--color-text-muted);
+    font-family: v.$font-mono;
+    font-size: m.fs("xs");
+    letter-spacing: 0.08em;
+  }
+}
+
+.section__title {
+  grid-column: 1 / -1;
+  margin-block-end: m.space("s");
+
+  &::before {
+    content: "// " / "";
+    color: var(--color-accent);
+  }
+}
+
+.section__intro {
+  grid-column: 1 / -1;
+  max-inline-size: 65ch;
+  margin-block-end: m.space("l");
+  color: var(--color-text-muted);
+  font-size: m.fs("md");
+}
+
+// Sidfot ------------------------------------------------------------------
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: m.space("s") m.space("l");
+  padding-block: m.space("l");
+  border-block-start: 1px solid var(--color-line);
+  color: var(--color-text-muted);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+
+  @include m.gutter;
+}
+
+.site-footer__text {
+  max-inline-size: 60ch;
+}

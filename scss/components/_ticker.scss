@@ -1,0 +1,48 @@
+// ==========================================================================
+// Komponent: ticker – långsamt scrollande rad med fiktiva blockhashar
+// ==========================================================================
+@use "../variables" as v;
+@use "../mixins" as m;
+
+.ticker {
+  // clip (med hidden som reserv) klipper bort raden utanför skärmen
+  // utan att skapa en scrollbar container – ingen horisontell sidscroll.
+  overflow: hidden;
+  overflow: clip;
+  border-block: 1px solid var(--color-line);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  font-family: v.$font-mono;
+  font-size: m.fs("xs");
+}
+
+// Innehållet finns två gånger i HTML. När raden flyttats exakt -50 %
+// står kopian där originalet började och loopen blir sömlös.
+.ticker__track {
+  display: flex;
+  inline-size: max-content;
+
+  @include m.motion {
+    animation: ticker 60s linear infinite;
+
+    .ticker:hover & {
+      animation-play-state: paused;
+    }
+  }
+}
+
+.ticker__item {
+  padding: m.space("2xs") m.space("m");
+  white-space: nowrap;
+
+  &::before {
+    content: "■ ";
+    color: var(--color-accent);
+  }
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}

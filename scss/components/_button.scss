@@ -1,0 +1,46 @@
+// ==========================================================================
+// Komponent: button – länkar som ser ut som knappar
+// ==========================================================================
+@use "../variables" as v;
+@use "../mixins" as m;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2.75rem;
+  padding: m.space("2xs") m.space("m");
+  border: 1px solid var(--color-accent);
+  border-radius: v.$radius;
+  color: var(--color-accent);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: var(--color-surface-raised);
+  }
+
+  // Bara transform animeras – det sköts av grafikkortet och ger ingen omlayout.
+  @include m.motion {
+    transition: transform 150ms ease-out;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.button--primary {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+
+  &:hover {
+    background-color: var(--color-accent);
+    box-shadow: 0 0 1.25rem var(--color-glow);
+  }
+}
