@@ -4,12 +4,19 @@
 @use "../variables" as v;
 @use "../mixins" as m;
 
-// Grid med auto-fit: kolumnerna blir så många som får plats, utan mediafrågor.
-// min(100%, 15rem) gör att ett kort aldrig blir bredare än skärmen vid 320 px.
+// Grid: 1 kolumn på mobil, 2 × 2 på tablet och 4 i rad på desktop,
+// så att de fyra faktarutorna aldrig hamnar som 3 + 1.
 .about__facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   gap: m.space("s");
+
+  @include m.mq("tablet") {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include m.mq("desktop") {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .about__fact {

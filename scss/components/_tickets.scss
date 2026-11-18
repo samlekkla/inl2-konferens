@@ -4,7 +4,8 @@
 @use "../variables" as v;
 @use "../mixins" as m;
 
-// Grid: 1 kolumn på mobil, 2 på tablet, 4 på desktop.
+// Grid: 1 kolumn på mobil, 2 på tablet, 4 först på breda skärmar
+// (vid 1024 px blir fyra kvitton för smala för beloppen).
 .tickets__list {
   display: grid;
   gap: m.space("m");
@@ -13,7 +14,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @include m.mq("desktop") {
+  @include m.mq("wide") {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

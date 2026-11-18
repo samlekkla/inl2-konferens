@@ -438,8 +438,17 @@ time {
 }
 .about__facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   gap: 1rem;
+}
+@media (min-width: 48em) {
+  .about__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 64em) {
+  .about__facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .about__fact {
@@ -546,7 +555,7 @@ time {
 
 .speakers__list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr));
   gap: 1.5rem;
 }
 
@@ -704,7 +713,7 @@ time {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (min-width: 64em) {
+@media (min-width: 80em) {
   .tickets__list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
