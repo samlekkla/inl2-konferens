@@ -1,0 +1,189 @@
+// ==========================================================================
+// Komponent: speakers + node – talargalleriet som noder i ett nätverk
+// ==========================================================================
+@use "../variables" as v;
+@use "../mixins" as m;
+
+// Grid: galleriet är tvådimensionellt (rader och kolumner).
+.speakers__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: m.space("m");
+}
+
+// Kortet har två kolumner överst (avatar + namn/roll) och full bredd under,
+// därför grid med namngivna ytor även inne i kortet.
+.node {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  grid-template-areas:
+    "avatar name"
+    "avatar role"
+    "bio bio"
+    "details details";
+  column-gap: m.space("s");
+  align-content: start;
+  block-size: 100%;
+  padding: m.space("m");
+  border: 1px solid var(--color-line);
+  border-radius: v.$radius;
+  background-color: var(--color-surface);
+
+  // Man har klickat på talarens namn i programmet och hamnat här.
+  &:target {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 1.5rem var(--color-glow);
+  }
+
+  // :has(): kortet markeras när länken inuti har tangentbordsfokus.
+  // :focus-within hade även reagerat på musklick, :focus-visible gör det inte.
+  &:has(.node__link:focus-visible) {
+    border-color: var(--color-warning);
+  }
+
+  @include m.motion {
+    transition: transform 200ms ease-out;
+
+    &:hover,
+    &:focus-within {
+      transform: translateY(-3px);
+    }
+  }
+}
+
+.node__avatar {
+  position: relative;
+  grid-area: avatar;
+  align-self: start;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  isolation: isolate;
+
+  // Gråskala med bara opacity: ett grått lager med blandningsläget
+  // "saturation" tar bort färgmättnaden i bilden under. När lagret tonas
+  // bort syns färgerna – ingen filter-animation behövs.
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #808080;
+    mix-blend-mode: saturation;
+    opacity: 0;
+  }
+}
+
+.node__image {
+  inline-size: 100%;
+}
+
+.node__name {
+  grid-area: name;
+  align-self: end;
+  font-size: m.fs("md");
+}
+
+// Statusprick (::before) och en pulserande ring (::after) runt den.
+.node__role {
+  position: relative;
+  grid-area: role;
+  padding-inline-start: m.space("s");
+  color: var(--color-text-muted);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 0;
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    margin-block-start: -0.25rem;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  @include m.motion {
+    &::after {
+      animation: pulse 2.4s ease-out infinite;
+    }
+  }
+}
+
+.node__bio {
+  grid-area: bio;
+  margin-block-start: m.space("s");
+}
+
+.node__details {
+  display: grid;
+  grid-area: details;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: m.space("3xs") m.space("s");
+  margin-block-start: m.space("s");
+  padding-block-start: m.space("s");
+  border-block-start: 1px dashed var(--color-line);
+  font-family: v.$font-mono;
+  font-size: m.fs("xs");
+}
+
+.node__term {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+// Långa e-postadresser och handles i monospace får brytas var som helst.
+.node__desc {
+  overflow-wrap: anywhere;
+}
+
+// Bara på enheter med riktig muspekare göms extrainfon tills hover/fokus.
+// På pekskärmar finns ingen hover, så där visas allt direkt och i färg.
+@media (hover: hover) and (pointer: fine) {
+  // Detaljerna läggs i samma grid-cell som bion och tonas in ovanpå den,
+  // så att kortet inte behöver reservera tom yta.
+  .node__details {
+    grid-area: bio;
+    padding-block-start: 0;
+    border-block-start: 0;
+    opacity: 0;
+  }
+
+  .node__avatar::after {
+    opacity: 1;
+  }
+
+  .node:hover,
+  .node:focus-within {
+    .node__avatar::after,
+    .node__bio {
+      opacity: 0;
+    }
+
+    .node__details {
+      opacity: 1;
+    }
+  }
+
+  @include m.motion {
+    .node__avatar::after,
+    .node__bio,
+    .node__details {
+      transition: opacity 250ms ease-out;
+    }
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
