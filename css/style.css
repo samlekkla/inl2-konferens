@@ -436,3 +436,110 @@ time {
     transform: translateX(-50%);
   }
 }
+.about__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+}
+
+.about__fact {
+  padding: 1rem;
+  border: 1px solid var(--color-line);
+  border-inline-start: 3px solid var(--color-accent);
+  background-color: var(--color-surface);
+}
+
+.about__term {
+  margin-block-end: 0.25rem;
+  color: var(--color-accent);
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.schedule {
+  counter-reset: block;
+}
+@media (min-width: 64em) {
+  .schedule {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3rem;
+    align-items: start;
+  }
+}
+
+.schedule__day + .schedule__day {
+  margin-block-start: 3rem;
+}
+@media (min-width: 64em) {
+  .schedule__day + .schedule__day {
+    margin-block-start: 0;
+  }
+}
+
+.schedule__day-title {
+  margin-block-end: 1.5rem;
+  padding-block-end: 0.5rem;
+  border-block-end: 1px dashed var(--color-line);
+  font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+}
+
+.chain {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.chain__item {
+  position: relative;
+  counter-increment: block;
+}
+.chain__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 2rem;
+  block-size: 2rem;
+  border-inline-start: 2px solid var(--color-accent);
+}
+
+.block {
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  background-color: var(--color-surface);
+}
+.block:hover {
+  border-color: var(--color-accent);
+}
+.block::before {
+  content: "BLOCK #" counter(block, decimal-leading-zero)/"";
+  display: block;
+  color: var(--color-text-muted);
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+}
+
+.block__time {
+  color: var(--color-warning);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.block__title {
+  margin-block: 0.25rem 0.5rem;
+}
+
+.block__speaker {
+  color: var(--color-text-muted);
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.9375rem;
+}
+
+.block__desc {
+  margin-block-start: 0.5rem;
+}

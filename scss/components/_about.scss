@@ -1,0 +1,30 @@
+// ==========================================================================
+// Komponent: about – fakta om konferensen
+// ==========================================================================
+@use "../variables" as v;
+@use "../mixins" as m;
+
+// Grid med auto-fit: kolumnerna blir så många som får plats, utan mediafrågor.
+// min(100%, 15rem) gör att ett kort aldrig blir bredare än skärmen vid 320 px.
+.about__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: m.space("s");
+}
+
+.about__fact {
+  padding: m.space("s");
+  border: 1px solid var(--color-line);
+  border-inline-start: 3px solid var(--color-accent);
+  background-color: var(--color-surface);
+}
+
+.about__term {
+  margin-block-end: m.space("3xs");
+  color: var(--color-accent);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,99 @@
+// ==========================================================================
+// Komponent: schedule – programmet som en kedja av block
+// ==========================================================================
+@use "../variables" as v;
+@use "../mixins" as m;
+
+$chain-gap: m.space("l");
+
+// Grid på desktop: två dagar sida vid sida (rader och kolumner).
+.schedule {
+  counter-reset: block;
+
+  @include m.mq("desktop") {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: m.space("xl");
+    align-items: start;
+  }
+}
+
+// Syskonkombinator: luft före dag 2 när dagarna ligger under varandra.
+.schedule__day + .schedule__day {
+  margin-block-start: m.space("xl");
+
+  @include m.mq("desktop") {
+    margin-block-start: 0;
+  }
+}
+
+.schedule__day-title {
+  margin-block-end: m.space("m");
+  padding-block-end: m.space("2xs");
+  border-block-end: 1px dashed var(--color-line);
+  font-size: m.fs("md");
+}
+
+// Flex: blocken ligger i en rad uppifrån och ner (en dimension).
+.chain {
+  display: flex;
+  flex-direction: column;
+  gap: $chain-gap;
+}
+
+.chain__item {
+  position: relative;
+  counter-increment: block;
+
+  // Kedjelänken: en linje ner till nästa block. :not(:last-child)
+  // gör att det sista blocket inte får en lös linje som pekar ut i tomma intet.
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 100%;
+    inset-inline-start: m.space("l");
+    block-size: $chain-gap;
+    border-inline-start: 2px solid var(--color-accent);
+  }
+}
+
+.block {
+  padding: m.space("s") m.space("m");
+  border: 1px solid var(--color-line);
+  border-radius: v.$radius;
+  background-color: var(--color-surface);
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  // Blocknummer från en CSS-räknare: BLOCK #01, #02 …
+  &::before {
+    content: "BLOCK #" counter(block, decimal-leading-zero) / "";
+    display: block;
+    color: var(--color-text-muted);
+    font-family: v.$font-mono;
+    font-size: m.fs("xs");
+    letter-spacing: 0.08em;
+  }
+}
+
+.block__time {
+  color: var(--color-warning);
+  font-size: m.fs("sm");
+  font-weight: 700;
+}
+
+.block__title {
+  margin-block: m.space("3xs") m.space("2xs");
+}
+
+.block__speaker {
+  color: var(--color-text-muted);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+}
+
+.block__desc {
+  margin-block-start: m.space("2xs");
+}
