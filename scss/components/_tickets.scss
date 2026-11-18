@@ -1,0 +1,124 @@
+// ==========================================================================
+// Komponent: tickets + ticket – biljettnivåer som transaktionskvitton
+// ==========================================================================
+@use "../variables" as v;
+@use "../mixins" as m;
+
+// Grid: 1 kolumn på mobil, 2 på tablet, 4 på desktop.
+.tickets__list {
+  display: grid;
+  gap: m.space("m");
+
+  @include m.mq("tablet") {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include m.mq("desktop") {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+// Flex i kortet: innehållet staplas i en kolumn och knappen trycks till botten.
+.ticket {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: m.space("s");
+  block-size: 100%;
+  padding: m.space("m") m.space("m") m.space("l");
+  border: 1px dashed var(--color-line);
+  background-color: var(--color-surface-raised);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+
+  // Attributselektor: kvittots transaktions-id hämtas ur data-tx.
+  &[data-tx]::before {
+    content: "TX " attr(data-tx) / "";
+    padding-block-end: m.space("2xs");
+    border-block-end: 1px dashed var(--color-line);
+    color: var(--color-text-muted);
+    font-size: m.fs("xs");
+    letter-spacing: 0.06em;
+  }
+
+  // Perforerad nederkant: halvcirklar i bakgrundsfärgen "biter" i kvittot.
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1px;
+    block-size: 0.5rem;
+    background: radial-gradient(circle at 50% 100%, var(--color-bg) 0.3rem, transparent 0.32rem) 0
+      100% / 1rem 0.5rem repeat-x;
+  }
+}
+
+.ticket--featured {
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 0 1.5rem var(--color-glow);
+}
+
+.ticket__title {
+  font-size: m.fs("lg");
+}
+
+.ticket__tier {
+  color: var(--color-warning);
+  font-size: m.fs("xs");
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+// Kvittoraderna: nyckel till vänster, belopp till höger.
+.ticket__ledger {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: m.space("3xs") m.space("s");
+  padding-block: m.space("s");
+  border-block: 1px dashed var(--color-line);
+}
+
+.ticket__key {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+
+  &::after {
+    content: ":" / "";
+  }
+}
+
+.ticket__value {
+  font-weight: 700;
+  text-align: end;
+
+  // Strukturell pseudoklass: det andra värdet är alltid "GAS FEE: 0".
+  &:nth-of-type(2) {
+    color: var(--color-accent);
+  }
+}
+
+.ticket__perks {
+  display: flex;
+  flex-direction: column;
+  gap: m.space("3xs");
+  font-family: v.$font-sans;
+}
+
+.ticket__perk {
+  position: relative;
+  padding-inline-start: m.space("m");
+
+  &::before {
+    content: "+" / "";
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--color-accent);
+    font-family: v.$font-mono;
+    font-weight: 700;
+  }
+}
+
+.ticket__cta {
+  margin-block-start: auto;
+}

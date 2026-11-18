@@ -1,0 +1,104 @@
+// ==========================================================================
+// Komponent: info – adress, tider, vägbeskrivning och karta
+// ==========================================================================
+@use "../variables" as v;
+@use "../mixins" as m;
+
+// Grid på desktop: text till vänster, kartan till höger över två rader.
+.info {
+  @include m.mq("desktop") {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    column-gap: m.space("xl");
+    align-items: start;
+  }
+}
+
+.info__group {
+  grid-column: 1;
+
+  + .info__group {
+    margin-block-start: m.space("l");
+  }
+}
+
+.info__title {
+  margin-block-end: m.space("s");
+  font-size: m.fs("md");
+}
+
+.info__address {
+  margin-block-end: m.space("m");
+  padding: m.space("s");
+  border-inline-start: 3px solid var(--color-accent);
+  background-color: var(--color-surface);
+  font-family: v.$font-mono;
+  font-size: m.fs("md");
+}
+
+.info__facts {
+  display: grid;
+  gap: m.space("3xs") m.space("s");
+
+  @include m.mq("tablet") {
+    grid-template-columns: max-content minmax(0, 1fr);
+  }
+}
+
+.info__term {
+  color: var(--color-text-muted);
+  font-family: v.$font-mono;
+  font-size: m.fs("sm");
+  text-transform: uppercase;
+
+  // På mobil står term och beskrivning under varandra – luft före varje
+  // ny term utom den första.
+  &:not(:first-child) {
+    margin-block-start: m.space("xs");
+
+    @include m.mq("tablet") {
+      margin-block-start: 0;
+    }
+  }
+}
+
+.info__routes {
+  display: flex;
+  flex-direction: column;
+  gap: m.space("xs");
+}
+
+.info__route {
+  padding-inline-start: m.space("s");
+  border-inline-start: 2px solid var(--color-line);
+}
+
+.info__mode {
+  color: var(--color-accent);
+  font-family: v.$font-mono;
+}
+
+.info__map {
+  margin-block-start: m.space("l");
+  border: 1px solid var(--color-line);
+  background-color: var(--color-surface);
+
+  // Rad 1 = blocknumret (::before), rad 2 = rubriken, rad 3–4 = grupperna.
+  @include m.mq("desktop") {
+    grid-column: 2;
+    grid-row: 3 / span 2;
+    margin-block-start: 0;
+  }
+}
+
+.info__map-image {
+  inline-size: 100%;
+}
+
+.info__caption {
+  padding: m.space("2xs") m.space("s");
+  border-block-start: 1px dashed var(--color-line);
+  color: var(--color-text-muted);
+  font-family: v.$font-mono;
+  font-size: m.fs("xs");
+}
