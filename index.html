@@ -90,14 +90,338 @@
 
       <section class="section about" id="om" aria-labelledby="om-title">
         <h2 class="section__title" id="om-title">Om konferensen</h2>
+        <p class="section__intro">
+          BLOCK/HEIGHT är konferensen för dem som tröttnat på keynotes om att allt ska förändras och
+          hellre vill veta hur det fungerar. Vi pratar om det som faktiskt körs i produktion, det
+          som fortfarande inte gör det och det som aldrig borde ha gjort det.
+        </p>
+        <dl class="about__facts">
+          <div class="about__fact">
+            <dt class="about__term">Vad</dt>
+            <dd class="about__desc">
+              Ett spår, åtta pass och en workshop om protokoll, säkerhet och ekonomi.
+            </dd>
+          </div>
+          <div class="about__fact">
+            <dt class="about__term">För vem</dt>
+            <dd class="about__desc">
+              Utvecklare, revisorer, forskare och skeptiker som vill bli skeptiska på rätt grunder.
+            </dd>
+          </div>
+          <div class="about__fact">
+            <dt class="about__term">Språk</dt>
+            <dd class="about__desc">Svenska på scen, engelska på bilderna. Det blir alltid så.</dd>
+          </div>
+          <div class="about__fact">
+            <dt class="about__term">Löfte</dt>
+            <dd class="about__desc">
+              Ingen säljer något från scenen. Den som försöker får mikrofonen avstängd.
+            </dd>
+          </div>
+        </dl>
       </section>
 
       <section class="section schedule" id="program" aria-labelledby="program-title">
         <h2 class="section__title" id="program-title">Program</h2>
+        <p class="section__intro">
+          Åtta pass fördelade på två dagar, i en kedja där varje block bygger på det förra. Ungefär
+          som i produktion, fast med kaffe och betydligt färre omorganisationer.
+        </p>
+
+        <section class="schedule__day" aria-labelledby="dag-1-title">
+          <h3 class="schedule__day-title" id="dag-1-title">
+            Dag 1 · <time datetime="2027-06-10">torsdag 10 juni</time>
+          </h3>
+          <ol class="chain">
+            <li class="chain__item">
+              <article class="block">
+                <p class="block__time">
+                  <time datetime="2027-06-10T09:30">09:30</time>–<time datetime="2027-06-10T10:15"
+                    >10:15</time
+                  >
+                </p>
+                <h4 class="block__title">Zero-knowledge på riktigt</h4>
+                <p class="block__speaker">
+                  <a class="block__speaker-link" href="#talare-valdemarsson">Ingrid Valdemarsson</a>
+                </p>
+                <p class="block__desc">
+                  Från whitepaper till produktion: vad bevisgenerering kostar i tid, minne och
+                  pengar, och varför ”vi lägger bara till ett zk-bevis” sällan är ett ”bara”.
+                </p>
+              </article>
+            </li>
+            <li class="chain__item">
+              <article class="block">
+                <p class="block__time">
+                  <time datetime="2027-06-10T10:45">10:45</time>–<time datetime="2027-06-10T11:30"
+                    >11:30</time
+                  >
+                </p>
+                <h4 class="block__title">Layer 2 utan magi</h4>
+                <p class="block__speaker">
+                  <a class="block__speaker-link" href="#talare-okafor">Tomás Okafor-Lind</a>
+                </p>
+                <p class="block__desc">
+                  Rollups, sekvenserare och frågan alla undviker: var ligger datan, och vem kan
+                  stänga av den? En ärlig genomgång av optimistiska och zk-baserade lösningar.
+                </p>
+              </article>
+            </li>
+            <li class="chain__item">
+              <article class="block">
+                <p class="block__time">
+                  <time datetime="2027-06-10T13:00">13:00</time>–<time datetime="2027-06-10T13:45"
+                    >13:45</time
+                  >
+                </p>
+                <h4 class="block__title">214 buggar senare</h4>
+                <p class="block__speaker">
+                  <a class="block__speaker-link" href="#talare-strom">Hedda Ström</a>
+                </p>
+                <p class="block__desc">
+                  Granskning av smarta kontrakt i praktiken: de vanligaste sårbarheterna, varför hög
+                  testtäckning inte är säkerhet och hur en användbar revisionsrapport ser ut.
+                </p>
+              </article>
+            </li>
+            <li class="chain__item">
+              <article class="block">
+                <p class="block__time">
+                  <time datetime="2027-06-10T14:15">14:15</time>–<time datetime="2027-06-10T15:00"
+                    >15:00</time
+                  >
+                </p>
+                <h4 class="block__title">Avgiftsmarknader för människor</h4>
+                <p class="block__speaker">
+                  <a class="block__speaker-link" href="#talare-ahlberg">Karim Ahlberg</a>
+                </p>
+                <p class="block__desc">
+                  Varför transaktionsavgifter beter sig som de gör, vad som händer när alla vill in
+                  i samma block och hur incitament överlever kontakt med riktiga användare.
+                </p>
+              </article>
+            </li>
+          </ol>
+        </section>
+
+        <section class="schedule__day" aria-labelledby="dag-2-title">
+          <h3 class="schedule__day-title" id="dag-2-title">
+            Dag 2 · <time datetime="2027-06-11">fredag 11 juni</time>
+          </h3>
+          <ol class="chain">
+            <li class="chain__item">
+              <article class="block">
+                <p class="block__time">
+                  <time datetime="2027-06-11T09:30">09:30</time>–<time datetime="2027-06-11T10:15"
+                    >10:15</time
+                  >
+                </p>
+                <h4 class="block__title">Konsensus på en värmepumps budget</h4>
+                <p class="block__speaker">
+                  <a class="block__speaker-link" href="#talare-nystrom">Aron Nyström</a>
+                </p>
+                <p class="block__desc">
+                  Energieffektiv konsensus mätt med riktiga mätare: vad proof-of-stake drar i ström,
+                  vad finalitet kostar och var de största siffrorna i debatten kommer ifrån.
+                </p>
+              </article>
+            </li>
+            <li class="chain__item">
+              <article class="block">
+                <p class="block__time">
+                  <time datetime="2027-06-11T10:45">10:45</time>–<time datetime="2027-06-11T11:30"
+                    >11:30</time
+                  >
+                </p>
+                <h4 class="block__title">Workshop: Bryt ett kontrakt</h4>
+                <p class="block__speaker">
+                  <a class="block__speaker-link" href="#talare-strom">Hedda Ström</a>
+                </p>
+                <p class="block__desc">
+                  Ta med datorn. Vi går igenom ett avsiktligt sårbart kontrakt och hittar felen
+                  innan någon annan gör det. Inga riktiga pengar, inga riktiga offer.
+                </p>
+              </article>
+            </li>
+            <li class="chain__item">
+              <article class="block">
+                <p class="block__time">
+                  <time datetime="2027-06-11T13:00">13:00</time>–<time datetime="2027-06-11T13:45"
+                    >13:45</time
+                  >
+                </p>
+                <h4 class="block__title">Vad hände med NFT:erna?</h4>
+                <p class="block__speaker">
+                  <a class="block__speaker-link" href="#talare-eklund">Maja Eklund</a>
+                </p>
+                <p class="block__desc">
+                  En obduktion av marknaden: vad som faktiskt såldes, vem som tjänade pengar och
+                  vilka tekniska idéer som är värda att behålla nu när röken har lagt sig.
+                </p>
+              </article>
+            </li>
+            <li class="chain__item">
+              <article class="block">
+                <p class="block__time">
+                  <time datetime="2027-06-11T14:15">14:15</time>–<time datetime="2027-06-11T15:00"
+                    >15:00</time
+                  >
+                </p>
+                <h4 class="block__title">Panel: Behöver ni ens en blockkedja?</h4>
+                <p class="block__speaker">
+                  Moderator:
+                  <a class="block__speaker-link" href="#talare-ahlberg">Karim Ahlberg</a>
+                </p>
+                <p class="block__desc">
+                  Avslutande panel där talarna försöker övertyga varandra om att svaret ibland är
+                  nej. Publikfrågor uppmuntras, särskilt de obekväma.
+                </p>
+              </article>
+            </li>
+          </ol>
+        </section>
       </section>
 
       <section class="section speakers" id="talare" aria-labelledby="talare-title">
         <h2 class="section__title" id="talare-title">Talare</h2>
+        <p class="section__intro">
+          Sex noder i nätverket. För muspekaren över ett kort, eller tabba till det, för att se
+          kontaktuppgifter och specialområde.
+        </p>
+        <ul class="speakers__list">
+          <li class="speakers__item">
+            <article class="node" id="talare-valdemarsson">
+              <h3 class="node__name">Ingrid Valdemarsson</h3>
+              <p class="node__role">Protokollutvecklare</p>
+              <p class="node__bio">
+                Har skrivit bevissystem i sex år och förklarat dem på middagar i fem. Lyckas ungefär
+                varannan gång.
+              </p>
+              <dl class="node__details">
+                <dt class="node__term">Specialområde</dt>
+                <dd class="node__desc">Rekursiva zk-SNARKs och bevis på vanlig hårdvara</dd>
+                <dt class="node__term">Handle</dt>
+                <dd class="node__desc">@ivaldemar</dd>
+                <dt class="node__term">Kontakt</dt>
+                <dd class="node__desc">
+                  <a class="node__link" href="mailto:ingrid@blockheight.example"
+                    >ingrid@blockheight.example</a
+                  >
+                </dd>
+              </dl>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="node" id="talare-okafor">
+              <h3 class="node__name">Tomás Okafor-Lind</h3>
+              <p class="node__role">Layer 2-arkitekt</p>
+              <p class="node__bio">
+                Bygger sekvenserare och besvarar frågan ”men är den decentraliserad?” med ett
+                tydligt och välmotiverat ”delvis”.
+              </p>
+              <dl class="node__details">
+                <dt class="node__term">Specialområde</dt>
+                <dd class="node__desc">Rollups, sekvenserare och datatillgänglighet</dd>
+                <dt class="node__term">Handle</dt>
+                <dd class="node__desc">@tokafor</dd>
+                <dt class="node__term">Kontakt</dt>
+                <dd class="node__desc">
+                  <a class="node__link" href="mailto:tomas@blockheight.example"
+                    >tomas@blockheight.example</a
+                  >
+                </dd>
+              </dl>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="node" id="talare-strom">
+              <h3 class="node__name">Hedda Ström</h3>
+              <p class="node__role">Säkerhetsrevisor</p>
+              <p class="node__bio">
+                Har rapporterat 214 sårbarheter i smarta kontrakt. Tre av dem fanns i hennes egen
+                kod, vilket hon gärna berättar om.
+              </p>
+              <dl class="node__details">
+                <dt class="node__term">Specialområde</dt>
+                <dd class="node__desc">Kontraktsgranskning och formell verifiering</dd>
+                <dt class="node__term">Handle</dt>
+                <dd class="node__desc">@hstrom_audit</dd>
+                <dt class="node__term">Kontakt</dt>
+                <dd class="node__desc">
+                  <a class="node__link" href="mailto:hedda@blockheight.example"
+                    >hedda@blockheight.example</a
+                  >
+                </dd>
+              </dl>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="node" id="talare-ahlberg">
+              <h3 class="node__name">Karim Ahlberg</h3>
+              <p class="node__role">Nationalekonom</p>
+              <p class="node__bio">
+                Räknar på incitament tills någon blir ledsen. Har aldrig frivilligt sagt ordet
+                ”tokenomics”.
+              </p>
+              <dl class="node__details">
+                <dt class="node__term">Specialområde</dt>
+                <dd class="node__desc">Mekanismdesign och avgiftsmarknader</dd>
+                <dt class="node__term">Handle</dt>
+                <dd class="node__desc">@kahlberg_econ</dd>
+                <dt class="node__term">Kontakt</dt>
+                <dd class="node__desc">
+                  <a class="node__link" href="mailto:karim@blockheight.example"
+                    >karim@blockheight.example</a
+                  >
+                </dd>
+              </dl>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="node" id="talare-eklund">
+              <h3 class="node__name">Maja Eklund</h3>
+              <p class="node__role">Teknikjournalist</p>
+              <p class="node__bio">
+                Har granskat branschen sedan 2017 och äger fortfarande en NFT. Den föreställer ett
+                kvitto.
+              </p>
+              <dl class="node__details">
+                <dt class="node__term">Specialområde</dt>
+                <dd class="node__desc">Granskande journalistik och marknadens efterspel</dd>
+                <dt class="node__term">Handle</dt>
+                <dd class="node__desc">@majaeklund</dd>
+                <dt class="node__term">Kontakt</dt>
+                <dd class="node__desc">
+                  <a class="node__link" href="mailto:maja@blockheight.example"
+                    >maja@blockheight.example</a
+                  >
+                </dd>
+              </dl>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="node" id="talare-nystrom">
+              <h3 class="node__name">Aron Nyström</h3>
+              <p class="node__role">Konsensusforskare</p>
+              <p class="node__bio">
+                Mäter elförbrukningen på valideringsnoder med en vanlig energimätare och ett stort
+                mått tålamod.
+              </p>
+              <dl class="node__details">
+                <dt class="node__term">Specialområde</dt>
+                <dd class="node__desc">Proof-of-stake, finalitet och energimätning</dd>
+                <dt class="node__term">Handle</dt>
+                <dd class="node__desc">@anystrom</dd>
+                <dt class="node__term">Kontakt</dt>
+                <dd class="node__desc">
+                  <a class="node__link" href="mailto:aron@blockheight.example"
+                    >aron@blockheight.example</a
+                  >
+                </dd>
+              </dl>
+            </article>
+          </li>
+        </ul>
       </section>
 
       <section class="section tickets" id="biljetter" aria-labelledby="biljetter-title">
