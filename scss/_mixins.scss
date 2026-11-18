@@ -1,0 +1,36 @@
+// ==========================================================================
+// Funktioner och mixins
+// ==========================================================================
+@use "sass:map";
+@use "variables" as v;
+
+// Hämtar ett värde ur en map och stoppar kompileringen vid stavfel.
+@function -token($map, $key, $name) {
+  @if not map.has-key($map, $key) {
+    @error "Okänd #{$name}: '#{$key}'.";
+  }
+  @return map.get($map, $key);
+}
+
+@function space($key) {
+  @return -token(v.$space, $key, "spacing");
+}
+
+@function fs($key) {
+  @return -token(v.$font-sizes, $key, "textstorlek");
+}
+
+// Mobile first: stilar inuti gäller från brytpunkten och uppåt.
+@mixin mq($key) {
+  @media (min-width: -token(v.$breakpoints, $key, "brytpunkt")) {
+    @content;
+  }
+}
+
+// All rörelse läggs här inuti, så stängs den av automatiskt
+// för den som valt "minska rörelse" i operativsystemet.
+@mixin motion {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}

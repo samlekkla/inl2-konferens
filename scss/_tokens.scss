@@ -1,0 +1,25 @@
+// ==========================================================================
+// Tokens – färgerna blir CSS custom properties så att temat kan bytas
+// med en mediafråga, helt utan JavaScript.
+// ==========================================================================
+@use "variables" as v;
+
+@mixin -theme($theme) {
+  @each $name, $value in $theme {
+    --color-#{$name}: #{$value};
+  }
+}
+
+// Mörkt "mainnet" är standard.
+:root {
+  color-scheme: dark light;
+
+  @include -theme(v.$theme-mainnet);
+}
+
+// Ljust "testnet" när användaren föredrar ljust läge.
+@media (prefers-color-scheme: light) {
+  :root {
+    @include -theme(v.$theme-testnet);
+  }
+}
