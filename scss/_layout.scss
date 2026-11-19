@@ -6,6 +6,32 @@
 
 // Sidhuvud ----------------------------------------------------------------
 // Flex: logga och meny ligger på en rad och bryts vid behov (en dimension).
+// Skip-link: ligger utanför skärmen ovanför sidan och glider in när den får
+// fokus (första Tab). transform i stället för top, så att rörelsen bara
+// animeras med transform och kan stängas av för reduced motion.
+.skip-link {
+  position: absolute;
+  inset-block-start: m.space("2xs");
+  inset-inline-start: m.space("2xs");
+  z-index: 20;
+  padding: m.space("2xs") m.space("s");
+  border-radius: v.$radius;
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: v.$font-mono;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: none;
+  }
+
+  @include m.motion {
+    transition: transform 150ms ease-out;
+  }
+}
+
 .site-header {
   display: flex;
   flex-wrap: wrap;

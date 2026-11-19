@@ -118,9 +118,37 @@ time {
   scroll-margin-top: 5rem;
 }
 
+:focus-visible {
+  outline: 3px solid var(--color-warning);
+  outline-offset: 3px;
+}
+
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-on-accent);
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  z-index: 20;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .skip-link {
+    transition: transform 150ms ease-out;
+  }
 }
 
 .site-header {
@@ -577,6 +605,7 @@ time {
 }
 .node:has(.node__link:focus-visible) {
   border-color: var(--color-warning);
+  box-shadow: inset 0 0 0 1px var(--color-warning);
 }
 @media (prefers-reduced-motion: no-preference) {
   .node {
