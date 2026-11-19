@@ -7,10 +7,12 @@
     "dev": "sass --watch --no-source-map scss/style.scss:css/style.css",
     "build": "sass --no-source-map scss/style.scss:css/style.css",
     "format": "prettier --write .",
-    "validate": "html-validate index.html"
+    "validate": "html-validate index.html",
+    "test": "playwright test"
   },
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "html-validate": "^11.4.0",
     "prettier": "^3.10.1",
     "sass": "^1.108.2"
