@@ -136,9 +136,7 @@ av kravet för grafiska objekt.
 - **Lighthouse (mobil):** Performance 95 · Accessibility 100 · Best Practices 100 · SEO 100.
   Kört med `npx serve` och `npx lighthouse http://localhost:3000 --form-factor=mobile`.
 
-<!-- Lägg in skärmdump av Lighthouse-rapporten här, t.ex. ![Lighthouse mobil](docs/lighthouse.png) -->
-
-_Platshållare: skärmdump av Lighthouse-resultatet._
+![Lighthouse mobil: Performance 95, Accessibility 100, Best Practices 100, SEO 100](docs/lighthouse.png)
 
 ## AI-logg och reflektion
 
