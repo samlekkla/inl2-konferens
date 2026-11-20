@@ -140,4 +140,32 @@ av kravet för grafiska objekt.
 
 ## AI-logg och reflektion
 
-<!-- Skrivs av mig själv -->
+### Logg
+
+Jag har använt Claude Code (i terminalen i VS Code) som stöd genom hela projektet. Jag gav
+kravspecen och bad om att arbetet skulle delas upp i faser. Efter varje fas granskade jag resultatet
+innan vi gick vidare.
+
+- **Fas 1:** projektet sattes upp med npm, Sass, Prettier och html-validate, och all HTML skrevs.
+- **Fas 2:** SVG-bilderna och all styling i Sass. Sidan testades i fyra bredder och kolumnerna
+  justerades så att inget bröts vid 1024 px.
+- **Fas 3a:** egen fokusmarkering, skip-link och ett Playwright-test mot horisontell scroll.
+- **Fas 3b:** Lighthouse, kontrastberäkning och README.
+
+Jag skapade repot, slog på GitHub Pages och gjorde alla push själv. Jag valde också bort
+AI-signaturen i commit-meddelandena, bytte namn på en av talarna och delade upp sista fasen på två
+dagar.
+
+### Reflektion
+
+Det jag tar med mig är att man kan låta AI bearbeta det man själv tänker. Jag bestämmer vad som ska
+göras och hur det ska se ut, och AI:n hjälper till att formulera det i kod. Den är mest användbar
+till sådant man annars gör om och om igen: att sätta upp verktyg, skriva liknande komponenter, testa
+samma sak i flera skärmbredder och räkna kontrast för varje färgpar. Då kan jag lägga min tid på att
+förstå lösningarna och kontrollera att resultatet blev som jag ville.
+
+Samtidigt går det inte att lita blint på det som kommer ut. Jag behövde granska varje fas och be om
+ändringar när något inte stämde. För att kunna förklara koden själv har jag gått igenom varför
+varje val gjordes, till exempel BEM, `:has()` och varför animationerna ligger i
+`prefers-reduced-motion`. Nästa gång skulle jag använda AI på samma sätt, men skriva fler delar själv
+först och låta AI:n granska dem, så att jag lär mig ännu mer på vägen.
